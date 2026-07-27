@@ -4,35 +4,35 @@ import api from '../context/api/api'
 const CollectMilk = () => {
     const [national_id, setNationalId] = useState("")
     const [litres, setLitres] = useState("")
-    const [session, setSession] = useState("")
+    const [session, setSession] = useState("MORNING")
 
-    const[dashboard,setDashboard]=useState(null)
+    const [dashboard, setDashboard] = useState(null)
 
-    // ui hooks 
+    // ui hooks
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState("")
     const [error, setError] = useState("")
 
-    const FetchDashboard=async()=>{
-        try{
-            const {data}= await api.get("/collector/dashboard/")
+    const FetchDashboard = async () => {
+        try {
+            const { data } = await api.get("collector/dashboard/")
             setDashboard(data)
-        }catch (error){
+        } catch (error) {
             console.log(error)
         }
     }
-    useEffect(()=>{
+    useEffect(() => {
         FetchDashboard()
-    },[])
+    }, [])
 
-    // function to handle submit 
+    // function to handle submit
     const HandleSubmit = async (e) => {
         e.preventDefault()
         setLoading(true)
         setError("")
         setMessage("")
 
-        // preparing our data 
+        // preparing our data
         const data = {
             national_id: national_id,
             litres: litres,
@@ -42,9 +42,8 @@ const CollectMilk = () => {
         try {
             const res = await api.post("collector/milk_collections/add/", data)
             console.log(data)
-            console.log("mess")
             console.log(res)
-            if(res?.data.error){
+            if (res?.data.error) {
                 setLoading(false)
                 setMessage("")
                 setError(res?.data?.error)
@@ -53,6 +52,7 @@ const CollectMilk = () => {
             setMessage(`${res?.data.message} for ${res?.data?.farmer}`)
             setNationalId("")
             setLitres("")
+            setLoading(false)
             FetchDashboard()
         } catch (error) {
             setError(error.response?.data?.message)
@@ -101,6 +101,7 @@ const CollectMilk = () => {
                         </div>
                         <div className="stat-card">
                             <p className="stat-label">Collections</p>
+                            <p class="stat-value">{dashboard?.collections_today}</p>
                         </div>
                         <div className="stat-card">
                             <p className="stat-label">Litres</p>
