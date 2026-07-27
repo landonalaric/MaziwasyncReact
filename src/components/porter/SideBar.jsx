@@ -34,7 +34,7 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                         </div>
 
                         <div>
-                            <h2 className="text-xl font-bold">
+                            <h2 className="text-2xl font-bold">
                                 MaziwaSync
                             </h2>
                             <p className="text-xs text-green-200">
@@ -46,17 +46,22 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                     {/* Navigation */}
                     <nav className="space-y-2">
 
-                        <NavLink
-                            to="/porter-dashboard"
-                            end
-                            className={linkClass}
-                            onClick={() => setIsOpen(false)}
-                        >
+                        <NavLink to="/porter-dashboard" end className={linkClass} onClick={() => setIsOpen(false)}>
                             <i className="bi bi-speedometer2"></i>
                             <span>Dashboard</span>
                         </NavLink>
 
-                        {/* Add more links below as you build the project */}
+                        <NavLink to="/porter-dashboard/porter/collect-milk" end className={linkClass} onClick={() => setIsOpen(false)}>
+                            <i className="bi bi-plus-circle"></i>
+                            <span>Collect Milk</span>
+                        </NavLink>
+
+                        <NavLink to="/porter-dashboard/porter/collections" end className={linkClass} onClick={() => setIsOpen(false)}>
+                            <i className="bi bi-plus-circle"></i>
+                            <span>My Collections </span>
+                        </NavLink>
+
+
 
                     </nav>
                 </div>

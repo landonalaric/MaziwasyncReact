@@ -12,6 +12,8 @@ import Login from './components/Login'
 import ProtectedRoute from './components/context/ProtectedRoute'
 import PorterDashboard from './components/porter/PorterDashboard'
 import PorterLayout from './components/porter/PorterLayout'
+import CollectMilk from './components/porter/CollectMilk'
+import MyCollections from './components/porter/MyCollections'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -25,8 +27,10 @@ function App() {
             <ProtectedRoute allowedRoles={["porter"]}>
                 <PorterLayout/>
             </ProtectedRoute>
-          }>
+            }>
             <Route path='' element={<PorterDashboard/>} />
+          <Route path='porter/collect-milk' element={<CollectMilk/>}/>
+          <Route path='porter/collections' element={<MyCollections/>}/>
           </Route>
           <Route path='' element={<LandingPage />} />
           <Route path='/login' element={<Login />} />

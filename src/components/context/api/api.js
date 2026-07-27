@@ -4,7 +4,7 @@ import axios from "axios";
 
 // this prevents us repeating the api url in every request 
 const api=axios.create({
-    baseURL:"http://sophieemp.alwaysdata.net/api/",
+    baseURL:"https://sophieemp.alwaysdata.net/api/",
     headers:{
         // tell the backend that we are sending JSON data
         "Content-Type":"application/json"
@@ -17,7 +17,7 @@ const api=axios.create({
 api.interceptors.request.use((config)=>{
     // extract the access token 
     const access_token=localStorage.getItem("access_token")
-    if (access_token){
+    if (access_token  && config.url !== "core/auth/login/"){
         config.headers.Authorization=`Bearer ${access_token}`
     }
     return config
