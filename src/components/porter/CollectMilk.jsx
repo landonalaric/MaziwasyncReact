@@ -40,7 +40,7 @@ const CollectMilk = () => {
         }
         console.log(data)
         try {
-            const res = await api.post("collector/milk_collections/add/", data)
+            const res = await api.post("collector/milk_collection/add/", data)
             console.log(data)
             console.log(res)
             if (res?.data.error) {
@@ -101,7 +101,7 @@ const CollectMilk = () => {
                         </div>
                         <div className="stat-card">
                             <p className="stat-label">Collections</p>
-                            <p class="stat-value">{dashboard?.collections_today}</p>
+                            <p className="stat-value">{dashboard?.collections_today}</p>
                         </div>
                         <div className="stat-card">
                             <p className="stat-label">Litres</p>

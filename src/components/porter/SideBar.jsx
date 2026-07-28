@@ -61,6 +61,12 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                             <span>My Collections </span>
                         </NavLink>
 
+                        <NavLink to="/porter-dashboard/porter/notices" end className={linkClass} onClick={() => setIsOpen(false)}>
+                            <i className="bi bi-megaphone"></i>
+                            <span>Notices </span>
+                        </NavLink>
+
+
 
 
                     </nav>

@@ -30,19 +30,20 @@ const Login = () => {
                 setError(res.data.error)
             }
             // if right credentials 
-            const {access_token,refresh,role,username}=res.data
+            const {access,refresh,role,username}=res.data
             // console.log(access_token)
 
             // create the user object 
             const userData={username,role}
             // save them to our context 
-            setToken(access_token)
+            setToken(access)
             setUser(userData)
 
             // saving to the localStorage
-            localStorage.setItem("access_token", access_token)
+            localStorage.setItem("access_token", access)
             localStorage.setItem("refresh",refresh)
             localStorage.setItem("user",JSON.stringify(userData))
+            console.log(res.data);
 
             // role based redirects 
             if(role==="admin"){
