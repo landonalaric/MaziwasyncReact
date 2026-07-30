@@ -13,7 +13,7 @@ const NotFound = () => {
                 <p className='tlex items-center justify-center gap-3'>The page you're looking for doesnt exist or has been moved</p>
 
                 <div className='flex items-center justify-center gap-3 my-4'>
-                    <button onClick={() => navigate(-1)} className='px-5 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-200 transition text-sm'><i class="bi bi-arrow-left-short"> </i> Back</button>
+                    <button onClick={() => navigate(-1)} className='px-5 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-200 transition text-sm'><i className="bi bi-arrow-left-short"> </i> Back</button>
                     <button onClick={() => navigate("/")} className='px-5 py-2 border border-green-300 text-green-600 hover:bg-green-200 transition text-sm rounded-lg'>
                         Go Home
                     </button>

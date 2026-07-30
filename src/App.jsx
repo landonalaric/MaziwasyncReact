@@ -16,6 +16,12 @@ import CollectMilk from './components/porter/CollectMilk'
 import MyCollections from './components/porter/MyCollections'
 import PorterNotices from './components/porter/PorterNotices'
 import PorterProfile from './components/porter/PorterProfile'
+import FarmerDashboard from './components/farmer/FarmerDashboard'
+import FarmerLayout from './components/farmer/FarmerLayout'
+import FarmerNotice from './components/farmer/FarmerNotice'
+import FarmerProfile from './components/farmer/FarmerProfile'
+import MilkCollection from './components/farmer/MilkCollection'
+import FarmerFeedback from './components/farmer/FarmerFeedback'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -27,16 +33,32 @@ function App() {
           {/* porter role routes */}
           <Route path='/porter-dashboard' element={
             <ProtectedRoute allowedRoles={["porter"]}>
-                <PorterLayout/>
+              <PorterLayout />
             </ProtectedRoute>
-            }>
-            <Route path='' element={<PorterDashboard/>} />
-          <Route path='porter/collect-milk' element={<CollectMilk/>}/>
-          <Route path='porter/collections' element={<MyCollections/>}/>
-          <Route path='porter/profile' element={<PorterProfile/>}/>
+          }>
+            <Route path='' element={<PorterDashboard />} />
+            <Route path='porter/collect-milk' element={<CollectMilk />} />
+            <Route path='porter/collections' element={<MyCollections />} />
+            <Route path='porter/profile' element={<PorterProfile />} />
 
-          <Route path='porter/notices' element={<PorterNotices/>}/>
+            <Route path='porter/notices' element={<PorterNotices />} />
           </Route>
+
+          {/* farmer role routes */}
+          <Route path='/farmer-dashboard' element={
+            <ProtectedRoute allowedRoles={["farmer"]}>
+              <FarmerLayout />
+            </ProtectedRoute>
+          }>
+
+          <Route path='' element={<FarmerDashboard />} />
+          <Route path='farmer/notice' element={<FarmerNotice />} />
+          <Route path='farmer/profile' element={<FarmerProfile />} />
+          <Route path='farmer/collections' element={<MilkCollection/>} />
+           <Route path='farmer/feedback' element={<FarmerFeedback/>} />
+
+          </Route>
+
           <Route path='' element={<LandingPage />} />
           <Route path='/login' element={<Login />} />
           <Route path='/not-authorized' element={<NotAuthorized />} />
