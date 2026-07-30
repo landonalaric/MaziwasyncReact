@@ -18,7 +18,7 @@ api.interceptors.request.use((config)=>{
     // extract the access token 
     const access_token=localStorage.getItem("access")
     if (access_token  && config.url !== "core/auth/login/"){
-        config.headers.Authorization=`Bearer ${access}`
+        config.headers.Authorization=`Bearer ${access_token}`
     }
     return config
 })

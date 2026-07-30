@@ -15,6 +15,7 @@ import PorterLayout from './components/porter/PorterLayout'
 import CollectMilk from './components/porter/CollectMilk'
 import MyCollections from './components/porter/MyCollections'
 import PorterNotices from './components/porter/PorterNotices'
+import PorterProfile from './components/porter/PorterProfile'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -32,6 +33,8 @@ function App() {
             <Route path='' element={<PorterDashboard/>} />
           <Route path='porter/collect-milk' element={<CollectMilk/>}/>
           <Route path='porter/collections' element={<MyCollections/>}/>
+          <Route path='porter/profile' element={<PorterProfile/>}/>
+
           <Route path='porter/notices' element={<PorterNotices/>}/>
           </Route>
           <Route path='' element={<LandingPage />} />

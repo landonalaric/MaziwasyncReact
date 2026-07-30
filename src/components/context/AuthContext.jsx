@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     // inital state auth by loading the token 
     // load the jwt token  from the local storage so login persist
     const [ token, setToken ] = useState(
-        () => localStorage.getItem("access_token") || ""
+        () => localStorage.getItem("access") || ""
     )
 
     // load the user data from the localStorage if available

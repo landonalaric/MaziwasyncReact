@@ -40,7 +40,7 @@ const Login = () => {
             setUser(userData)
 
             // saving to the localStorage
-            localStorage.setItem("access_token", access)
+            localStorage.setItem("access", access)
             localStorage.setItem("refresh",refresh)
             localStorage.setItem("user",JSON.stringify(userData))
             console.log(res.data);

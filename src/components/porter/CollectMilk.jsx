@@ -17,6 +17,7 @@ const CollectMilk = () => {
         try {
             const { data } = await api.get("collector/dashboard/")
             setDashboard(data)
+            console.log(data)
         } catch (error) {
             console.log(error)
         }
@@ -34,14 +35,14 @@ const CollectMilk = () => {
 
         // preparing our data
         const data = {
-            national_id: national_id,
+            national_id_number: national_id,
             litres: litres,
             session: session
         }
         console.log(data)
         try {
             const res = await api.post("collector/milk_collection/add/", data)
-            console.log(data)
+            console.log('data',data)
             console.log(res)
             if (res?.data.error) {
                 setLoading(false)
@@ -82,6 +83,7 @@ const CollectMilk = () => {
                     <div>
                         <label htmlFor="" className='form-label' >Select Session</label>
                         <select className="milk-input" name="" id="" value={session} onChange={(e) => setSession(e.target.value)}>
+                            <option value="select">Select session</option> 
                             <option value="MORNING">Morning</option>
                             <option value="EVENING">Evening</option>
                         </select>
@@ -101,7 +103,7 @@ const CollectMilk = () => {
                         </div>
                         <div className="stat-card">
                             <p className="stat-label">Collections</p>
-                            <p className="stat-value">{dashboard?.collections_today}</p>
+                            <p className="stat-value">{dashboard?.total_collections_today}</p>
                         </div>
                         <div className="stat-card">
                             <p className="stat-label">Litres</p>
