@@ -22,6 +22,7 @@ import FarmerNotice from './components/farmer/FarmerNotice'
 import FarmerProfile from './components/farmer/FarmerProfile'
 import MilkCollection from './components/farmer/MilkCollection'
 import FarmerFeedback from './components/farmer/FarmerFeedback'
+import CattleAi from './components/farmer/CattleAi'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -56,6 +57,7 @@ function App() {
           <Route path='farmer/profile' element={<FarmerProfile />} />
           <Route path='farmer/collections' element={<MilkCollection/>} />
            <Route path='farmer/feedback' element={<FarmerFeedback/>} />
+           <Route path='farmer/cattle-ai' element={<CattleAi/>} />
 
           </Route>
 
