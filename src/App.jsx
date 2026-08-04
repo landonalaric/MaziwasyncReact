@@ -23,13 +23,26 @@ import FarmerProfile from './components/farmer/FarmerProfile'
 import MilkCollection from './components/farmer/MilkCollection'
 import FarmerFeedback from './components/farmer/FarmerFeedback'
 import CattleAi from './components/farmer/CattleAi'
+import AdminDashboard from './components/Admin/AdminDashboard'
+import AdminLayout from './components/Admin/AdminLayout'
+import AdminProfile from './components/Admin/AdminProfile'
+import PortersList from './components/Admin/PortersList'
+import { ToastContainer } from 'react-toastify'
+import PorterAdd from './components/Admin/PorterAdd'
+import PorterEdit from './components/Admin/PorterEdit'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
+    
     <Router>
       <AuthProvider>
+        <ToastContainer 
+        position='top-right'
+        autoClose={3000}
+        hideProgressBar={false}
+        />
         <Routes>
           {/* porter role routes */}
           <Route path='/porter-dashboard' element={
@@ -41,7 +54,6 @@ function App() {
             <Route path='porter/collect-milk' element={<CollectMilk />} />
             <Route path='porter/collections' element={<MyCollections />} />
             <Route path='porter/profile' element={<PorterProfile />} />
-
             <Route path='porter/notices' element={<PorterNotices />} />
           </Route>
 
@@ -51,14 +63,25 @@ function App() {
               <FarmerLayout />
             </ProtectedRoute>
           }>
+            <Route path='' element={<FarmerDashboard />} />
+            <Route path='farmer/notice' element={<FarmerNotice />} />
+            <Route path='farmer/profile' element={<FarmerProfile />} />
+            <Route path='farmer/collections' element={<MilkCollection />} />
+            <Route path='farmer/feedback' element={<FarmerFeedback />} />
+            <Route path='farmer/cattle-ai' element={<CattleAi />} />
+          </Route>
 
-          <Route path='' element={<FarmerDashboard />} />
-          <Route path='farmer/notice' element={<FarmerNotice />} />
-          <Route path='farmer/profile' element={<FarmerProfile />} />
-          <Route path='farmer/collections' element={<MilkCollection/>} />
-           <Route path='farmer/feedback' element={<FarmerFeedback/>} />
-           <Route path='farmer/cattle-ai' element={<CattleAi/>} />
-
+          {/* Admin role routes */}
+          <Route path='/admin-dashboard' element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <AdminLayout />
+            </ProtectedRoute>
+          }>
+            <Route path='' element={<AdminDashboard />} />
+            <Route path='admin/profile' element={<AdminProfile />} />
+            <Route path='admin/porters' element={<PortersList />} />
+            <Route path='admin/porters/add' element={<PorterAdd />} />
+            <Route path='admin/porters/edit/:id' element={<PorterEdit />} /> 
           </Route>
 
           <Route path='' element={<LandingPage />} />
@@ -66,6 +89,7 @@ function App() {
           <Route path='/not-authorized' element={<NotAuthorized />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
+
       </AuthProvider>
     </Router>
   )
