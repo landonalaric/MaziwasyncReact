@@ -69,6 +69,15 @@ const SideBar = ({ isOpen, setIsOpen }) => {
                             <i className="bi bi-people"></i>
                             <span>Porters</span>
                         </NavLink>
+
+                        <NavLink
+                            to="/admin-dashboard/admin/farmers"
+                            className={linkClass}
+                            onClick={() => setIsOpen(false)}
+                        >
+                            <i className="bi bi-people"></i>
+                            <span>Farmers</span>
+                        </NavLink>
                     </nav>
                 </div>
 

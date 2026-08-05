@@ -43,10 +43,9 @@ const PorterEdit = () => {
     }, [id]);
 
     const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setForm({ ...form, [name]: type === 'checkbox' ? checked : value });
-    };
-
+    const { name, value, type, checked } = e.target
+    setForm({ ...form, [name]: type === 'checkbox' ? checked : value })
+}
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);

@@ -1,7 +1,6 @@
 // create a reusable axios instance 
 
 import axios from "axios";
-
 // this prevents us repeating the api url in every request 
 const api=axios.create({
     baseURL:"https://klaus.alwaysdata.net/api/",

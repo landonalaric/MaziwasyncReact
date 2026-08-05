@@ -25,7 +25,7 @@ const AdminProfile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const { data } = await api.get("admin/profile/")
+                const { data } = await api.get("cooperative/admin/profile/")
                 setProfile({
                     name: data.name || "",
                     email: data.email || "",
@@ -51,7 +51,7 @@ const AdminProfile = () => {
         setError("")
         setSuccess("")
         try {
-            await api.patch("admin/profile/")
+            await api.patch("cooperative/admin/profile/", profile)
             setSuccess("Profile updated successfully")
             setEditMode(false)
         } catch (err) {
@@ -79,7 +79,7 @@ const AdminProfile = () => {
         }
 
         try {
-            await api.post("admin/change-password/", {
+            await api.post("cooperative/admin/change-password/", {
                 current_password: passwordForm.current_password,
                 new_password: passwordForm.new_password
             })
